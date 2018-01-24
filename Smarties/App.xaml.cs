@@ -28,43 +28,10 @@ namespace Smarties
             MainPage = new NavigationPage(new SmartiesPage());
         }
 
-        private async Task InitDBAsync()
-        {
-            var fileHelperService = DependencyService.Get<IFileHelper>();
-            if (fileHelperService == null)
-            {
-                return;
-            }
-
-            var databaseFilePath = fileHelperService.GetLocalFilePath("RoomSQLite.db3");
-
-            AppContext.RoomDatabase = new RoomDatabase(databaseFilePath);
-
-            Room room1 = new Room { RoomName = "Room 1", Beacon = "Beacon1", Hue = "Hue1" };
-            Room room2 = new Room { RoomName = "Room 2", Beacon = "Bed Room Beacon", Hue = "Bed Room Hue" };
-            Room room3 = new Room { RoomName = "Room 3", Beacon = "Office Beacon", Hue = "Office Hue" };
-
-            await AppContext.RoomDatabase.SaveItemAsync(room1);
-            await AppContext.RoomDatabase.SaveItemAsync(room2);
-            await AppContext.RoomDatabase.SaveItemAsync(room3);
-
-            var blub = await AppContext.RoomDatabase.GetItemsAsync();
-            var roomList = blub.ToList();
-            Debug.WriteLine(roomList);
-
-            //var blub2 = await AppContext.RoomDatabase.GetItemsAsync();
-            //var roomList2 = blub2.ToList();
-            //Debug.WriteLine(roomList2);
-
-            //await AppContext.RoomDatabase.SaveItemAsync(room1);
-            //await AppContext.RoomDatabase.SaveItemAsync(room2);
-            //await AppContext.RoomDatabase.SaveItemAsync(room3);
-
-        }
-
         protected override void OnStart()
         {
-            InitDBAsync();
+
+
         }
 
         protected override void OnSleep()

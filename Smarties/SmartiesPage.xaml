@@ -15,13 +15,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <ImageCell.ContextActions>
-<!--                            <MenuItem
-                                Clicked="OnDelete"
-                                Text="Delete"
-                                IsDestructive="True" />
--->
-                        </ImageCell.ContextActions>
+                        <ViewCell.ContextActions>
+                           <MenuItem Clicked="OnSettingsClicked" CommandParameter="{Binding .}"
+                              Text="Settings" />
+                           <MenuItem Clicked="OnDeleteClicked" CommandParameter="{Binding .}"
+                              Text="Delete" IsDestructive="True" />
+                        </ViewCell.ContextActions>
                         <StackLayout
                             Orientation="Horizontal"
                             Padding="15,0">
