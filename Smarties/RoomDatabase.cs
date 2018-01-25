@@ -48,6 +48,13 @@ namespace Smarties
             }
         }
 
+        //public async Task<int> AlterTableAsync(string colNew)
+        //{
+
+        //    return dbConnection.QueryAsync<Room>(
+        //        "ALTER TABLE Room ADD COLUMN ? CHAR", colNew);
+        //}
+
         public Task<int> DeleteItemAsync(Room item)
         {
             return dbConnection.DeleteAsync(item);

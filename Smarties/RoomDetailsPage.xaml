@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="Smarties.RoomSettingsPage"
-    x:Name="RoomSettingsView">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Smarties.RoomDetailsPage"
+    x:Name="RoomDetailsView"
+    Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout Padding="20">
             <Entry x:Name="RoomNameEntry"
@@ -16,12 +17,15 @@
             </Picker>
             <Picker x:Name="HuePicker"
                 Title="Select Hue Lamp" 
-                ItemsSource="{Binding 'HueList'}"
+                ItemsSource="{Binding HueList}"
                 SelectedItem="{Binding SelectedHue}"
                 HorizontalOptions="FillAndExpand">
             </Picker>
-            <Button Text="Done"
-                Clicked="Handle_Completed"/>
+            <Button x:Name="DoneButton"
+                Text="Done"
+                Clicked="Handle_Completed"
+                IsEnabled="{Binding IsValid}">
+            </Button>   
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -11,21 +11,19 @@ namespace Smarties
         {
             InitializeComponent();
 
-            //var tabs = new TabbedPage();
+            var tabs = new TabbedPage();
 
-            //var tab1 = new NavigationPage(new SmartiesPage());
-            //tab1.Title = "Home";
+            var tab1 = new NavigationPage(new MainPage());
+            tab1.Title = "Home";
 
+            var tab2 = new NavigationPage(new RoomListPage());
+            tab2.Title = "Rooms";
 
-            //var generalSettingsPage = new GeneralSettingsPage();
-            //generalSettingsPage.BindingContext = AppContext.GeneralSettings;
-            //var tab2 = new NavigationPage(generalSettingsPage);
-            //tab2.Title = "Settings";
+            tabs.Children.Add(tab1);
+            tabs.Children.Add(tab2);
 
-            //tabs.Children.Add(tab1);
-            //tabs.Children.Add(tab2);
-
-            MainPage = new NavigationPage(new SmartiesPage());
+            //MainPage = new NavigationPage(new RoomListPage()); 
+            MainPage = tabs;
         }
 
         protected override void OnStart()

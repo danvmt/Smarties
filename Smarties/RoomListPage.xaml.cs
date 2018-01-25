@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Smarties
 {
-    public partial class SmartiesPage : ContentPage
+    public partial class RoomListPage : ContentPage
     {
         
-        public SmartiesPage()
+        public RoomListPage()
         {
             InitializeComponent();
         }
@@ -17,14 +17,18 @@ namespace Smarties
 
         async void OnButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RoomSettingsPage(new Room()));
+            var room = new Room();
+            var vm = new RoomViewModel(room);
+            var roomDetailsPage = new RoomDetailsPage(vm);
+            await Navigation.PushAsync(roomDetailsPage);
         }
 
         async void OnSettingsClicked(object sender, EventArgs e)
         {
             var mi = sender as MenuItem;
             Room room = mi.CommandParameter as Room;
-            await Navigation.PushAsync(new RoomSettingsPage(room));
+            RoomViewModel vm = new RoomViewModel(room);
+            await Navigation.PushAsync(new RoomDetailsPage(vm));
         }
 
         async void OnDeleteClicked(object sender, EventArgs e)
@@ -32,13 +36,21 @@ namespace Smarties
             var mi = (MenuItem)sender;
             Room room = mi.CommandParameter as Room;
             await AppContext.RoomDatabase.DeleteItemAsync(room);
-            OnAppearing();
+            SetItemsSource();
         }
 
         async void OnClearClicked(object sender, EventArgs e)
         {
             await AppContext.RoomDatabase.DropTable();
-            InitDBAsync();
+            await InitDBAsync();
+            SetItemsSource();
+        }
+
+        async void OnSelectedItem(object sender, SelectedItemChangedEventArgs e)
+        {
+            Room room = e.SelectedItem as Room;
+            RoomViewModel vm = new RoomViewModel(room);
+            await Navigation.PushAsync(new RoomDetailsPage(vm));
         }
 
         protected override async void OnAppearing()
@@ -48,10 +60,13 @@ namespace Smarties
             {
                 await InitDBAsync();
             }
-            else
-            {
-                listView.ItemsSource = await AppContext.RoomDatabase.GetItemsAsync();
-            }
+           
+            SetItemsSource();
+        }
+
+        private async void SetItemsSource()
+        {
+            listView.ItemsSource = await AppContext.RoomDatabase.GetItemsAsync();
         }
 
         private async Task InitDBAsync()
@@ -79,8 +94,6 @@ namespace Smarties
                 await AppContext.RoomDatabase.SaveItemAsync(room2);
                 await AppContext.RoomDatabase.SaveItemAsync(room3);
             }
-
-            listView.ItemsSource = roomList;
         }
     }
 }

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:local="clr-namespace:Smarties" 
-    x:Class="Smarties.SmartiesPage">
+    x:Class="Smarties.RoomListPage"
+    Title="Rooms">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="AddItem" Order="Primary" Text="+" Priority="0" Activated="OnButtonClicked"/>
     </ContentPage.ToolbarItems>
@@ -11,7 +12,8 @@
             x:Name="listView"
             CachingStrategy="RecycleElement"
             RowHeight="100"
-            SeparatorVisibility="Default">
+            SeparatorVisibility="Default"
+            ItemSelected="OnSelectedItem">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

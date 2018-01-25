@@ -8,7 +8,13 @@ namespace Smarties.iOS
 {
         public class FileHelper : IFileHelper
         {
-            public string GetLocalFilePath(string filename)
+        public void DeleteFile(string filename)
+        {
+            string path = GetLocalFilePath(filename);
+            File.Delete(path);
+        }
+
+        public string GetLocalFilePath(string filename)
             {
                 string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                 string libFolder = Path.Combine(docFolder, "..", "Library", "Databases");

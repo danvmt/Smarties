@@ -29,8 +29,12 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml" />
-    <EmbeddedResource Include="SmartiesPage.xaml" />
-    <EmbeddedResource Include="RoomSettingsPage.xaml">
+    <EmbeddedResource Include="RoomListPage.xaml" />
+    <EmbeddedResource Include="RoomDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -39,17 +43,22 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SmartiesPage.xaml.cs">
-      <DependentUpon>SmartiesPage.xaml</DependentUpon>
+    <Compile Include="RoomListPage.xaml.cs">
+      <DependentUpon>RoomListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />
-    <Compile Include="RoomSettingsPage.xaml.cs">
-      <DependentUpon>RoomSettingsPage.xaml</DependentUpon>
+    <Compile Include="RoomDetailsPage.xaml.cs">
+      <DependentUpon>RoomDetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="IFileHelper.cs" />
     <Compile Include="RoomDatabase.cs" />
     <Compile Include="AppContext.cs" />
+    <Compile Include="RoomViewModel.cs" />
+    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
