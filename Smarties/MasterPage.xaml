@@ -1,0 +1,39 @@
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="using:Smarties"
+             x:Class="Smarties.MasterPage"
+             Padding="0,40,0,0"
+             Icon="hamburger.png"
+             Title="Smarties"
+             BackgroundColor="Aqua">
+    <StackLayout Padding="10" BackgroundColor="Aqua">
+        <StackLayout Orientation="Horizontal" HeightRequest="100">
+            <Image Source="homer.jpg" Aspect="AspectFit"/>
+            <Label Text="Homer" Margin="10,0" VerticalOptions="End"/>
+        </StackLayout>
+
+        <Button Text="Home" HorizontalOptions="Start" Clicked="OnHomeClicked"/>
+        <Button Text="Rooms" HorizontalOptions="Start" Clicked="OnRoomsClicked"/>
+<!--        <ListView x:Name="listView">
+           <ListView.ItemsSource>
+                <x:Array Type="{x:Type local:MasterPageItem}">
+                    <local:MasterPageItem Title="Home" TargetType="{x:Type local:WelcomePage}" />
+                    <local:MasterPageItem Title="Rooms" TargetType="{x:Type local:RoomListPage}" />
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="1" Text="{Binding Title}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+-->    </StackLayout>
+</ContentPage>

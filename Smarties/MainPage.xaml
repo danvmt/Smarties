@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="Smarties.MainPage">
-    <ContentPage.Content>
-        <StackLayout 
-                Padding="15,0">
-            <Label 
-                Text="dsfasdfa" />
-            <Label 
-                Text="asdf" 
-                FontSize="Small" />
-            <Label 
-                Text="asdf" 
-                FontSize="Small" />
-            <Button 
-                Text="blub" 
-                HorizontalOptions="Center" 
-                VerticalOptions="CenterAndExpand"/>
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:Smarties;assembly=Smarties"
+                  x:Class="Smarties.MainPage">
+    <MasterDetailPage.Master>
+        <local:MasterPage x:Name="masterPage" />
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:WelcomePage />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
